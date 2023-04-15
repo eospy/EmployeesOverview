@@ -1,0 +1,37 @@
+﻿<Window x:Class="EmployeesOverview.MVVM.View.DepartmentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeesOverview.MVVM.View"
+        xmlns:viewModel="clr-namespace:EmployeesOverview.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="Отделы" Height="600" Width="920">
+    <Window.DataContext>
+        <viewModel:DepartmentViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0"
+                  Background="Beige"
+                  RowBackground="Gray"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="LightGray"
+            ItemsSource="{Binding Departments}"
+                  SelectedItem="{Binding SelectedDepartment}"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                                    Width="20"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Название"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Адрес"
+                                    Binding="{Binding Address}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

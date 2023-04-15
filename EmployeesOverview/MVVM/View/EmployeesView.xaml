@@ -1,0 +1,146 @@
+﻿<Window x:Class="EmployeesOverview.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeesOverview"
+        xmlns:viewModel="clr-namespace:EmployeesOverview.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="Сотрудники"
+        Height="600" 
+        Width="920"
+        ResizeMode="CanResizeWithGrip"
+        Background="Transparent">
+    <Window.DataContext>
+        <viewModel:EmployeesViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" 
+                    Background="Gray">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                <Button Content="Отделы"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="WhiteSmoke"
+                    Command="{Binding OpenDepartmentsCommand}">
+
+                </Button>
+                <Button Content="Сериализация"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Foreground="WhiteSmoke">
+
+                </Button>
+            </StackPanel>
+
+        </Grid>
+        <DataGrid Grid.Row="1"
+                  Background="Beige"
+                  RowBackground="Gray"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="LightGray"
+            ItemsSource="{Binding Employees}"
+                  SelectedItem="{Binding SelectedEmployee}"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                                    Width="20"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Имя"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Фамилия"
+                                    Binding="{Binding Surname}"/>
+                <DataGridTextColumn Header="Отдел"
+                                    Binding="{Binding Department.Name}"/>
+                <DataGridTextColumn Header="Должность"
+                                    Width="80"
+                                    Binding="{Binding Position}"/>
+                <DataGridTextColumn Header="Зарплата"
+                                    Binding="{Binding Salary}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="2" 
+              Background="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="0">
+
+                <Label Content="Имя"/>
+                <Label Content="Фамилия"/>
+                <Label Content="Отдел"/>
+                <Label Content="Должность"/>
+                <Label Content="Зарплата"/>
+                <Button Content="Добавить"
+                        BorderThickness="0"
+                        Command="{Binding AddEmployeeCommand}"
+                        >
+
+                </Button>
+
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Grid.Column="1"
+                        >
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Margin" Value="0,7,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="{Binding NameTextBox}">
+                    
+                </TextBox>
+                <TextBox Text="{Binding SurnameTextBox }">
+
+                </TextBox>
+                <ComboBox ItemsSource="{Binding Departments}"
+                          SelectedItem="{Binding SelectedDepartment}"
+                          DisplayMemberPath="Name">
+                    
+                </ComboBox>
+                <TextBox Text="{Binding PositionTextBox}">
+
+                </TextBox>
+                <TextBox Text="{Binding SalaryTextBox}">
+
+                </TextBox>
+                
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        Grid.Column="2"
+                        >
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Margin" Value="0,7,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Label Content="Сотрудник"
+                       FontSize="16"/>
+                <Label Content="{Binding SelectedEmployee.Name}"
+                       FontSize="16"/>
+                <Label FontSize="16"
+                    Content="{Binding SelectedEmployee.Surname}"/>
+                <TextBox FontSize="16"
+                           Text="{Binding SelectedEmployee.Position}"/>
+                <TextBox  FontSize="16"
+                            Text="{Binding SelectedEmployeeSalary}"/>
+                <Button Content="Внести изменения"
+                        FontSize="16"
+                        Command="{Binding SaveChangesCommand}">
+                    
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
