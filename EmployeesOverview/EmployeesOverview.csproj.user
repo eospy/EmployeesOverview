@@ -10,12 +10,18 @@
     <Compile Update="MVVM\View\DepartmentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\View\SerializationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MVVM\View\DepartmentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\View\EmployeesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\SerializationView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -14,8 +14,10 @@ namespace EmployeesOverview.MVVM.ViewModel
 {
     public class EmployeesViewModel: ViewModelBase
     {
+        DatabaseContext db;
         public RelayCommand AddEmployeeCommand { get; set; }
         public RelayCommand OpenDepartmentsCommand { get; set; }
+        public RelayCommand OpenSerializationCommand { get; set; }
         public RelayCommand SaveChangesCommand { get; set; }
         private string _nameTextBox;
         private string _surnameTextBox;
@@ -24,25 +26,26 @@ namespace EmployeesOverview.MVVM.ViewModel
 
         private Department _selectedDepartment;
         private Employee _selectedEmployee;
-        private string _selectedEmployeeSalary;
         private ObservableCollection<Employee> _employees;
         private ObservableCollection<Department> _departments;
         public EmployeesViewModel()
         {
+            db = App.GetDb();
             _departments = GetDepartments();
             _employees = GetEmployees();
             AddEmployeeCommand = new RelayCommand(o => AddEmployee());
             SaveChangesCommand = new RelayCommand(o => SaveChanges());
             OpenDepartmentsCommand = new RelayCommand(o => OpenDepartments());
+            OpenSerializationCommand = new RelayCommand(o => OpenSerialization());
         }
         private void AddEmployee()
         {
-            int salary;
-            if (int.TryParse(_salaryTextBox,out salary))
+            if (int.TryParse(_salaryTextBox,out int salary))
             {
-                Employee employee = new (_nameTextBox, _surnameTextBox, _positionTextBox, salary);
-                employee.Department = SelectedDepartment;
-                var db = App.GetDb();
+                Employee employee = new(_nameTextBox, _surnameTextBox, _positionTextBox, salary)
+                {
+                    Department = SelectedDepartment
+                };
                 db.Employees.Add(employee);
                 Employees.Add(employee);
                 db.SaveChanges();
@@ -51,17 +54,19 @@ namespace EmployeesOverview.MVVM.ViewModel
         }
         private void SaveChanges()
         {
-            var db = App.GetDb();
             var employee=db.Employees.Find(_selectedEmployee.Id);
             int salary;
-            if (int.TryParse(_selectedEmployeeSalary, out salary))
-            {
-                employee.Salary = salary;
-                employee.Position = _selectedEmployee.Position;
-                _selectedEmployee = employee;
-                db.SaveChanges();
-            }
-               
+            employee.Salary = _selectedEmployee.Salary;
+            employee.Position = _selectedEmployee.Position;
+            SelectedEmployee = employee;
+            db.SaveChanges();
+
+        }
+
+        private void OpenSerialization()
+        {
+            SerializationView view = new();
+            view.Show();
         }
         private void OpenDepartments()
         {
@@ -99,13 +104,7 @@ namespace EmployeesOverview.MVVM.ViewModel
             set
             {
                 SetProperty(ref _selectedEmployee, value);
-                SelectedEmployeeSalary = _selectedEmployee.Salary.ToString();
             } 
-        }
-        public string SelectedEmployeeSalary
-        {
-            get => _selectedEmployeeSalary;
-            set=> SetProperty(ref _selectedEmployeeSalary, value);
         }
         public ObservableCollection<Employee> Employees
         {
@@ -120,7 +119,6 @@ namespace EmployeesOverview.MVVM.ViewModel
         
         public ObservableCollection<Department> GetDepartments()
         {
-            var db = App.GetDb();
             var data = new ObservableCollection<Department>();
             foreach(var d in db.Departments)
             {
@@ -130,7 +128,6 @@ namespace EmployeesOverview.MVVM.ViewModel
         }
         private ObservableCollection<Employee> GetEmployees()
         {
-            var db = App.GetDb();
             var data =new ObservableCollection<Employee>();
             foreach (var e in db.Employees)
             {

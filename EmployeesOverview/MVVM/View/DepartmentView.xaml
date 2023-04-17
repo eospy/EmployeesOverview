@@ -31,7 +31,176 @@
                                     Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Адрес"
                                     Binding="{Binding Address}"/>
+
+                <DataGridTemplateColumn Header="Сотрудники">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Employees}"
+                                      >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"/>
+                                            <TextBlock Text="{Binding Surname}" Margin="2,0,0,0"/>
+                                        </StackPanel>
+
+
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Кабинеты">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Offices}"
+                                      SelectedItem="{Binding SelectedOffice}"
+                                      >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Roomnumber}"/>
+                                            <TextBlock Text="{Binding Name}" Margin="2,0,0,0"/>
+                                            
+                                        </StackPanel>
+
+
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Grid.Row="1"
+              Background="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" 
+                        Orientation="Vertical">
+                <TextBlock Text="Добавить отдел"
+                           FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Название"></TextBlock>
+                <TextBox Text="{Binding DepNameTextBox}"></TextBox>
+                <TextBlock Text="Адрес"></TextBlock>
+                <TextBox Text="{Binding DepAddressTextBox}"></TextBox>
+                <Button Content="Добавить"
+                        Command="{Binding AddDepartmentCommand}">
+
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                Orientation="Vertical"
+                        
+>
+                <TextBlock Text="Выбранный отдел"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"></TextBlock>
+                <TextBox Text="{Binding SelectedDepartment.Name}"/>
+                <ListView 
+                ItemsSource="{Binding SelectedDepartment.Employees}"
+                          SelectedItem="{Binding SelectedEmployee}"
+                          Height="130">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding Surname}" Margin="2,0,0,0"/>
+                                <Button Content="❌" Command="{Binding Path=DataContext.DeleteEmployeeCommand,RelativeSource=
+                                   {RelativeSource FindAncestor, 
+                                   AncestorType={x:Type ItemsControl}}}"
+                                        BorderThickness="0"
+                                        Foreground="Red"
+                                        Background="Transparent"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Сохранить "
+                        Command="{Binding SaveChangesCommand}">
+
+                    </Button>
+                    <Button Content="Отменить"
+                            Command="{Binding CancelChangesCommand}"></Button>
+                </StackPanel>
+                
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBox Margin="0,16,0,0"  Text="{Binding SelectedDepartment.Address}"/>
+                <ListView 
+                ItemsSource="{Binding SelectedDepartment.Offices}"
+                          SelectedItem="{Binding SelectedOffice}"
+                          Height="130">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Roomnumber}"/>
+                                <TextBlock Text="{Binding Name}" Margin="2,0,0,0"/>
+                                <Button Content="❌" Command="{Binding Path=DataContext.DeleteOfficeCommand,RelativeSource=
+                                   {RelativeSource FindAncestor, 
+                                   AncestorType={x:Type ItemsControl}}}"
+                                        BorderThickness="0"
+                                        Foreground="Red"
+                                        Background="Transparent"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+            <StackPanel Grid.Column="3"
+                        Orientation="Vertical">
+                <Label Content="Имя"/>
+                <Label Content="Фамилия"/>
+                <Label Content="Должность"/>
+                <Label Content="Зарплата"/>
+                <Button Content="Добавить"
+                        BorderThickness="0"
+                        Command="{Binding AddEmployeeCommand}"
+                        >
+                </Button>
+                <TextBlock Text="Добавить кабинет"
+                           FontWeight="Bold"/>
+                <Label Content="Номер"/>
+                <Label Content="Название"/>
+            </StackPanel>
+            <StackPanel Grid.Column="4"
+                Orientation="Vertical"
+                        
+                        >
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Margin" Value="0,7,0,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="{Binding NameTextBox}">
+
+                </TextBox>
+                <TextBox Text="{Binding SurnameTextBox }">
+
+                </TextBox>
+                <TextBox Text="{Binding PositionTextBox}">
+
+                </TextBox>
+                <TextBox Text="{Binding SalaryTextBox}">
+
+                </TextBox>
+                <Button Content="Добавить кабинет"
+                        Margin="0,25,0,0"
+                        Command="{Binding AddOfficeCommand}"></Button>
+                <TextBox Text="{Binding RoomNumberTextBox}"
+                    Margin="0,0,0,0"></TextBox>
+                <TextBox Text="{Binding OfficeNameTextBox}"></TextBox>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

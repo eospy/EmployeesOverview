@@ -49,12 +49,16 @@ C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\bin\Debug\n
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\bin\Debug\net6.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview.csproj.AssemblyReference.cache
+C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\DepartmentView.g.cs
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\EmployeesView.g.cs
+C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\SerializationView.g.cs
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview_MarkupCompile.cache
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview_MarkupCompile.lref
+C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\DepartmentView.baml
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\EmployeesView.baml
+C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\SerializationView.baml
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview.g.resources
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview.AssemblyInfoInputs.cache
@@ -66,5 +70,3 @@ C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\n
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview.pdb
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\EmployeesOverview.genruntimeconfig.cache
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\ref\EmployeesOverview.dll
-C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\DepartmentView.g.cs
-C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\obj\Debug\net6.0-windows\MVVM\View\DepartmentView.baml

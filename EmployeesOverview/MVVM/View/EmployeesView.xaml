@@ -35,7 +35,8 @@
                 <Button Content="Сериализация"
                     Background="Transparent"
                     BorderThickness="0"
-                    Foreground="WhiteSmoke">
+                    Foreground="WhiteSmoke"
+                    Command="{Binding OpenSerializationCommand}">
 
                 </Button>
             </StackPanel>
@@ -134,7 +135,7 @@
                 <TextBox FontSize="16"
                            Text="{Binding SelectedEmployee.Position}"/>
                 <TextBox  FontSize="16"
-                            Text="{Binding SelectedEmployeeSalary}"/>
+                            Text="{Binding SelectedEmployee.Salary}"/>
                 <Button Content="Внести изменения"
                         FontSize="16"
                         Command="{Binding SaveChangesCommand}">

@@ -1,0 +1,52 @@
+﻿<Window x:Class="EmployeesOverview.MVVM.View.SerializationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeesOverview.MVVM.View"
+        xmlns:viewModel="clr-namespace:EmployeesOverview.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="Сериализация" Height="600" Width="920">
+    <Window.DataContext>
+        <viewModel:SerializationViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Background="Gray">
+            <Button  Content="Получить список отделов"
+                     Foreground="White"
+                     Background="Transparent"
+                     Command="{Binding GetDepartmentsListCommand}">
+
+            </Button>
+            <Button Content="Сохранить"
+                    Foreground="White"
+                     Background="Transparent"
+                    Command="{Binding SaveFileCommand}">
+
+            </Button>
+            <Button Content="Загрузить"
+                    Foreground="White"
+                     Background="Transparent"
+                    Command="{Binding DownloadFileCommand}">
+
+            </Button>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="187.5"/>
+                <ColumnDefinition Width="112.5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Top"
+                   Text="{Binding DepartmentsList}" Grid.ColumnSpan="2"></TextBlock>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Эмиль\source\repos\EmployeesOverview\EmployeesOverview\App.xaml
-2545288045
+31511075373
 
-12489679842
+151638650121
 213-368711752
-MVVM\View\DepartmentView.xaml;MVVM\View\EmployeesView.xaml;
+MVVM\View\DepartmentView.xaml;MVVM\View\EmployeesView.xaml;MVVM\View\SerializationView.xaml;
 
 False
 
